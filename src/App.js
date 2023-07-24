@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import React from "react";
+import "./App.css";
+import Layout from "./Components/layout";
+import { useRoutes } from "react-router-dom";
+import Home from "./Components/home";
+import Why from "./Components/why";
+import Works from "./Components/works";
 
 function App() {
+  const routes = useRoutes([
+    { path: "/", element: <Home name="home" /> },
+    { path: "/why", element: <Why name="why" /> },
+    // { path: "/user/:fname/:lname", element: <User /> },
+    { path: "/works", element: <Works name="works" /> },
+    // { path: "*", element: <Error /> },
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout header={'Home'}>{routes}</Layout>
     </div>
   );
 }
